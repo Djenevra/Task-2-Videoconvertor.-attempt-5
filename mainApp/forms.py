@@ -5,3 +5,4 @@ class UsesDownloadWithYoutubelibrary(forms.Form):
     def getNewurl():
         temp = getlinkdownloadNew(url)
         return temp
+        file = forms.FileField()

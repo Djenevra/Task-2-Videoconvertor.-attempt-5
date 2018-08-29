@@ -11,7 +11,7 @@ def getlinkdownloadNew(currentLink):
         }],
     }
     with youtube_dl.YoutubeDL(youtube_options) as youtubeVariable:
-        dict_info = youtubeVariable.extract_info(currentLink, download=True)
+        dict_info = youtubeVariable.extract_info(currentLink, download=False)
         url=dict_info['url']
         print(dict_info.keys)
     return url

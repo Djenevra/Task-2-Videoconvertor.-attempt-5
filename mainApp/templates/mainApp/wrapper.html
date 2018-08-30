@@ -14,7 +14,7 @@
         <img src="{% static 'mainApp/Image/Thinkingoutloud.jpeg' %}"class="img-thumbnail">
         <h1>{% include "mainApp/includes/some_html.html" %}</h1>
 
-      
+
 
 <p>
   <a href="/" class ="btn btn-success btn-lg">Don't click also</a>
@@ -23,6 +23,7 @@
 <form method="POST">
   {%csrf_token%}
   {{form}}
+
   <p>
     <input type="submit" value="ok">
   </p>

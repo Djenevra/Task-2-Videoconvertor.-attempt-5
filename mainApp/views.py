@@ -11,8 +11,9 @@ def index (request):
         if tempForm.is_valid():
             temp2 = UsesDownloadWithYoutubelibrary()
             link = tempForm.cleaned_data['links']
+            mail_address = tempForm.cleaned_data['mail_address']
             temp = getlinkdownloadNew(link)
-            print(temp)
+
             return redirect(temp)
     else:
         useForm = UsesDownloadWithYoutubelibrary()

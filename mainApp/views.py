@@ -14,7 +14,7 @@ def index (request):
             mail_address = tempForm.cleaned_data['mail_address']
             temp = getlinkdownloadNew(link)
 
-            return redirect(temp)
+            return HttpResponse ("<h1>Thank You, link will be sent to Your e-mail</h1>")
     else:
         useForm = UsesDownloadWithYoutubelibrary()
         return render (request,"mainApp/HomePage.html",{"form":useForm})

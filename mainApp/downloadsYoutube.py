@@ -1,19 +1,31 @@
 import youtube_dl
+
+
 def getlinkdownloadNew(currentLink):
-    url = ""
+    path_template = 'media/uploads/%(title)s.%(ext)s'
+
     youtube_options = {
-    'outtmpl': 'media/uploads/%(title)s.%(ext)s',
-    'format': 'bestaudio/best',
-    #'audio-format': 'mp3',
-    'extractaudio' : True,
-    'postprocessors': [{
-        'key' : 'FFmpegExtractAudio',
-        'preferredcodec' : 'mp3',
-        'preferredquality' : '320',
-        }],
+        'outtmpl': path_template,
+        'format': 'bestaudio/best',
+        # 'audio-format': 'mp3',
+        'extractaudio': True,
+        'postprocessors': [
+            {
+                'key': 'FFmpegExtractAudio',
+                'preferredcodec': 'mp3',
+                'preferredquality': '320',
+            }
+        ],
     }
+
+    path = None
+    title = None
+
     with youtube_dl.YoutubeDL(youtube_options) as youtubeVariable:
-        dict_info = youtubeVariable.extract_info(currentLink, download=True)
-        url=dict_info['url']
-        print(dict_info.keys)
-    return url
+        video_info = youtubeVariable.extract_info(currentLink, download=True)
+        title = video_info.get('title')
+        ext = video_info.get('ext')
+
+        path = path_template % {'title': title, 'ext': ext}
+
+    return path, title

@@ -20,7 +20,7 @@
   <a href="/" class ="btn btn-success btn-lg">Don't click also</a>
  <a href="/news" class ="btn btn-primary btn-lg">Don't click</a>
 </p>
-<form method="POST">
+<form method="POST" enctype="multipart/form-data">
   {%csrf_token%}
   {{form}}
 

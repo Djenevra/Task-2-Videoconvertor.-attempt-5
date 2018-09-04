@@ -1,13 +1,11 @@
 
 from django import forms
-class UsesDownloadWithYoutubelibrary(forms.Form):
+
+
+class VideoConversionForm(forms.Form):
     links = forms.CharField()
     mail_address = forms.EmailField()
-    def getNewurl():
-        temp = getlinkdownloadNew(url)
-        return temp
-        file = forms.FileField()
-
-
-
-        
+    #file = forms.FileField()
+    #def getNewurl():
+        #temp = getlinkdownloadNew(url)
+        #return temp

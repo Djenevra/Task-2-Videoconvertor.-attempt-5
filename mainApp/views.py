@@ -27,5 +27,5 @@ def list(request):
     return HttpResponse(list='title')
 
 
-def download(request):
+def download(request, filename):
     return HttpResponse(download='path')

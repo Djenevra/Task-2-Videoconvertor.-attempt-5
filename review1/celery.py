@@ -2,9 +2,9 @@ from __future__ import absolute_import, unicode_literals
 from celery import Celery
 
 app = Celery('proj',
-             broker='amqp://',
-             backend='amqp://',
-             include=['review1.tasks'])
+             broker='redis://',
+             backend='redis://',
+             include=['mainApp.tasks'])
 
 # Optional configuration, see the application user guide.
 app.conf.update(

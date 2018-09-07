@@ -38,9 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django_celery_beat',
-    'django_celery_results',
-    'celerytest',
+    #'django_celery_beat',
+    #'django_celery_results',
+    #'celerytest',
 ]
 
 MIDDLEWARE = [
@@ -124,5 +124,10 @@ USE_TZ = True
 STATIC_URL = '/static/'
 MEDIA_ROOT  = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
-CELERY_BROKER_URL = 'redis://localhost'
+CELERY_BROKER_URL = 'redis://localhost:6379'
 CELERY_RESULT_BACKEND = 'redis://localhost:6379'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 1025
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
+#MAIL_USE_TCP = True

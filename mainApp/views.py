@@ -3,7 +3,12 @@ from django.http import HttpResponse
 from .forms import VideoConversionForm
 from .models import Video
 from .downloadsYoutube import getlinkdownloadNew
-
+from django.core.mail import send_mail
+from django.conf import settings
+#recipient = "fortestsonly23@gmail.com"
+#subject = "Ссылка на скачивание Вашей песни"
+#text = "Здесь должна быть ссылка на песню из медиа файла... сик оф зэсе факинг линкс"
+#message = subject+text
 
 def index(request):
     if request.method == "POST":
@@ -13,6 +18,7 @@ def index(request):
             link = form.cleaned_data['links']
             path, title = getlinkdownloadNew(link)
             email = form.cleaned_data['mail_address']
+            #send_mail(subject, text, settings.EMAIL_HOST_USER, [email])
 
             video = Video(email=email, path=path, title=title)
             video.save()

@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    #'django_celery_beat',
+    'django_celery_beat',
     #'django_celery_results',
     #'celerytest',
 ]
@@ -128,6 +128,6 @@ CELERY_BROKER_URL = 'redis://localhost:6379'
 CELERY_RESULT_BACKEND = 'redis://localhost:6379'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 1025
-EMAIL_HOST_USER = ''
-EMAIL_HOST_PASSWORD = ''
+EMAIL_HOST_USER = 'fortestsonly23@gmail.com'
+EMAIL_HOST_PASSWORD = 'for123tests'
 #MAIL_USE_TCP = True

@@ -1,9 +1,10 @@
 from django.db import models
+#from django.db import IntegrityError
 
 
 class Video(models.Model):
     email = models.EmailField()
-    path = models.CharField(max_length=255)
+    path = models.CharField(max_length=255, null=True, blank=True)
     title = models.CharField(max_length=255)
 
     def __str__(self):

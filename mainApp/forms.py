@@ -2,7 +2,6 @@
 from django import forms
 
 
-class VideoConversionForm(forms.Form):
+class videoconversionform(forms.Form):
     links = forms.CharField()
     mail_address = forms.EmailField()
-    

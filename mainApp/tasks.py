@@ -8,12 +8,11 @@ import json
 import re
 
 
-
 @shared_task
 def videoconversion(currentLink):
     #path_template = 'media/uploads/%(title)s.%(ext)s'
     youtube_options = {
-        'outtmpl': 'media/uploads/%(title)s.%(ext)s',
+        'outtmpl': 'media/uploads/%(id)s.%(ext)s',
         'format': 'bestaudio/best',
         'audio-format': 'mp3',
         'extractaudio': True,
@@ -26,25 +25,24 @@ def videoconversion(currentLink):
         ],
     }
 
-    path = None
-    title = None
+    #path = None
+    id = None
 
     with youtube_dl.YoutubeDL(youtube_options) as youtubevariable:
         video_info = youtubevariable.extract_info(currentLink, download=True)
-        title = video_info.get('title')
+        id = video_info.get('id')
 
-
-
-
-        #title = ' '.join(string.split())
-        #title = re.sub(r'\s', '', title)
-
+        #title = filename
+    # file will be uploaded to MEDIA_ROOT/image/<filename>
+        #ext = title.split('.')[-1]
+        #title = "%s.%s" % (uuid.uuid4(), ext
+    #'media/uploads/{0}'.format(filename)
         domain = 'http://127.0.0.1:8000/'
         format = '.mp3'
-        path = 'media/uploads/{}'.format(title)
+        path = 'media/uploads/{}'.format(id)
         url = domain + path + format
 
-    return url, title
+    return url
 
 
 

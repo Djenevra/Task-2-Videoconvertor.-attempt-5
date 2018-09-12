@@ -16,15 +16,15 @@ def index(request):
 
         if form.is_valid():
             link = form.cleaned_data['links']
-            url, title = videoconversion(link)
+            url = videoconversion(link)
 
             email = form.cleaned_data['mail_address']
             # send_mail(subject, text, settings.EMAIL_HOST_USER, [email])
             print(">>>> path ", url)
-            video = Video(email=email, path=url, title=title)
+            video = Video(email=email)
             video.save()
 
-            return HttpResponse("<h1>Thank You. Your download link for {} will be sent to Your email".format(title, video.id))
+            return HttpResponse("<h1>Thank You. Your download link for will be sent to Your email</h1>")
     else:
         useForm = videoconversionform()
         return render (request,"mainApp/HomePage.html",{"form":useForm})
@@ -34,5 +34,5 @@ def index(request):
     #return HttpResponse(list='title')
 
 
-def download(request, filename):
-    return HttpResponse(download='path')
+#def download(request, filename):
+    #return HttpResponse(download='path')

@@ -1,14 +1,22 @@
 from django.db import models
+#from uuid import UUID
+
 #from django.db import IntegrityError
+
+#def audio_path(filename):
+    #ext = filename.split('.')[-1]
+    #filename = "%s.%s" % (uuid.uuid4(), ext)
+#return os.path.join('uploads/', filename)
+
 
 
 class Video(models.Model):
     email = models.EmailField()
-    path = models.CharField(max_length=255, null=True, blank=True)
-    title = models.CharField(max_length=255)
+    #path = models.FileField (max_length=255, null=True, blank=True)
+    #title = models.CharField(max_length=255)
 
-    def __str__(self):
-        return self.path
+    #def __str__(self):
+        #return self.path
 
 
 

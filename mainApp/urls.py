@@ -3,6 +3,7 @@ from . import views
 
 urlpatterns = [
     re_path(r'^$', views.index),
+    
     #re_path(r'^list$', views.list),
     #re_path(r'^download$', views.download)
 

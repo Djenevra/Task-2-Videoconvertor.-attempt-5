@@ -1,8 +1,9 @@
-from django.urls import include, re_path, path
+from django.urls import include, path
 from . import views
 
 urlpatterns = [
-    re_path(r'^$', views.index),
+    path('', views.index),
+    path('downloads/<id>/', views.upload_file),
     #re_path(r'^$', views.get_audiofile),
 
     #re_path(r'^list$', views.list),

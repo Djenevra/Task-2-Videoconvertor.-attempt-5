@@ -3,7 +3,7 @@ from . import views
 
 urlpatterns = [
     path('', views.index),
-    path('downloads/<id>/', views.upload_file),
+    path('downloads/<id>/', views.download_file),
     #re_path(r'^$', views.get_audiofile),
 
     #re_path(r'^list$', views.list),

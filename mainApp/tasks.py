@@ -26,23 +26,27 @@ def videoconversion(currentLink):
     }
 
     #path = None
-    id = None
+    #id = None
 
     with youtube_dl.YoutubeDL(youtube_options) as youtubevariable:
         video_info = youtubevariable.extract_info(currentLink, download=True)
         id = video_info.get('id')
 
-        #title = filename
+        #title = title.replace(" ", "")
     # file will be uploaded to MEDIA_ROOT/image/<filename>
         #ext = title.split('.')[-1]
         #title = "%s.%s" % (uuid.uuid4(), ext
     #'media/uploads/{0}'.format(filename)
         domain = 'http://127.0.0.1:8000/'
         format = '.mp3'
-        path = 'downloads/{}/'.format(id)
-        url = domain + path + format
+        path = 'mainApp/' + 'downloads/{}'.format(id)
+        url = domain + path
+        id = '{}'.format(id)
+        print ("&&&&&", path)
+        print (id)
 
     return url
+
 
 
 

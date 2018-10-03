@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .forms import videoconversionform
 from .models import Video
@@ -22,27 +22,38 @@ def index(request):
             url = videoconversion(link)
 
             email = form.cleaned_data['mail_address']
-            get_file = download(request, url)
+            #get_file = download(request, url)
 
             # send_mail(subject, text, settings.EMAIL_HOST_USER, [email])
             #print(">>>> path ", url)
             video = Video(email=email)
             video.save()
 
-            ultimate_url = os.path.join(settings.MEDIA_ROOT, url)
-            print (ultimate_url)
-            if os.path.exists(ultimate_url):
-                with open(ultimate_url, 'rb') as fh:
-                    response = HttpResponse(fh.read(), content_type='application/mp3')
-                    response['Content-Disposition'] = 'attachment; filename = go_fuck_yourself'
 
-                    return response
+            print (url)
 
+            url = download(request, id)
 
             #return HttpResponse("<h1>Thank You. Your download link will be sent to Your email</h1>")
     else:
         useForm = videoconversionform()
         return render (request,"mainApp/HomePage.html",{"form":useForm})
+
+
+def download(request, id):
+
+    id = 
+    url = os.path.join(settings.MEDIA_ROOT, id)
+    #print url
+    if os.path.exists(url):
+        with open(url, 'rb') as fh:
+            response = HttpResponse(fh.read(), content_type='application/mp3')
+            response['Content-Disposition'] = 'attachment; filename = audio.mp3'
+
+        return response
+
+
+
 
 
 

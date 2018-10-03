@@ -12,7 +12,7 @@ import re
 def videoconversion(currentLink):
     #path_template = 'media/uploads/%(title)s.%(ext)s'
     youtube_options = {
-        'outtmpl': 'media/uploads/%(id)s.%(ext)s',
+        'outtmpl': 'media/%(id)s.%(ext)s',
         'format': 'bestaudio/best',
         'audio-format': 'mp3',
         'extractaudio': True,
@@ -39,7 +39,7 @@ def videoconversion(currentLink):
     #'media/uploads/{0}'.format(filename)
         domain = 'http://127.0.0.1:8000/'
         format = '.mp3'
-        path = 'media/uploads/{}'.format(id)
+        path = 'downloads/{}/'.format(id)
         url = domain + path + format
 
     return url

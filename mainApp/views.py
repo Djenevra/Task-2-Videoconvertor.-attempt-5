@@ -42,8 +42,8 @@ def index(request):
 
 def download(request, id):
 
-    id = 
-    url = os.path.join(settings.MEDIA_ROOT, id)
+    id = format(id)
+    url = os.path.join(settings.MEDIA_ROOT, format(id))
     #print url
     if os.path.exists(url):
         with open(url, 'rb') as fh:

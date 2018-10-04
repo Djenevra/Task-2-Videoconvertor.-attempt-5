@@ -4,7 +4,7 @@ from .forms import videoconversionform
 from .models import Video
 from .tasks import videoconversion
 from django.conf import settings
-from django.core.mail import send_mail
+
 import os
 
 #recipient = "fortestsonly23@gmail.com"
@@ -24,12 +24,12 @@ def index(request):
 
             email = form.cleaned_data['mail_address']
 
-            # send_mail(subject, text, settings.EMAIL_HOST_USER, [email])
+            #send_mail(subject, text, settings.EMAIL_HOST_USER, [email])
             #print(">>>> path ", url)
             video = Video(email=email)
             video.save()
             get_file = id
-            print ("*****", url, "^^^^^^", get_file)
+            #generate_and_send_email(subject, message)
             return HttpResponse("<h1>Thank You. Your download link will be sent to Your email</h1>")
     else:
         useForm = videoconversionform()

@@ -5,7 +5,8 @@ from .models import Video
 import youtube_dl
 from django.core.mail import send_mail
 import json
-import re
+#from review1 import settings
+
 
 
 @shared_task
@@ -44,26 +45,12 @@ def videoconversion(currentLink):
         id = '{}'.format(id)
         print ("&&&&&", path)
         print (id)
+        sender = "fortestsonly23@gmail.com"
+        recipient = "fortestsonly23@gmail.com"
+        subject = "Videoconvertor"
+        text = "Click the link to download your mp3 file %s" % (url)
+        message = "Subject: {}\n\n{}".format(subject, text)
+        #send_mail(subject, message, sender, ['fortestsonly23@gmail.com'], fail_silently=False,)
+        send_mail(subject, message, sender, ['fortestsonly23@gmail.com'])
 
     return url
-
-
-
-
-#smtpObj = smtplib.SMTP('smtp.gmail.com', 587)
-#smtpObj.login('fortestsonly23@gmail.com','for123tests')
-
-
-#sender = "fortestsonly23@gmail.com"
-#recipient = "fortestsonly23@gmail.com"
-#password = "for123tests"
-#subject = "Videoconvertor"
-#text = "Click the link to download your mp3 file %s" % (generated_path_to_mp3)
-#path = [0]
-#smtp_server = smtplib.SMTP("smtp.gmail.com", 587)
-#smtp_server.ehlo()
-#smtp_server.starttls()
-#smtp_server.login(sender,password)
-#message = "Subject: {}\n\n{}".format(subject, text)
-#smtp_server.sendmail(sender, recipient, message)
-#smtp_server.quit()

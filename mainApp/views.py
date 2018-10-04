@@ -20,7 +20,7 @@ def index(request):
 
         if form.is_valid():
             link = form.cleaned_data['links']
-            url = videoconversion(link)
+            url = videoconversion.delay(link)
 
             email = form.cleaned_data['mail_address']
 
@@ -28,7 +28,7 @@ def index(request):
             #print(">>>> path ", url)
             video = Video(email=email)
             video.save()
-            get_file = id
+
             #generate_and_send_email(subject, message)
             return HttpResponse("<h1>Thank You. Your download link will be sent to Your email</h1>")
     else:
@@ -42,7 +42,7 @@ def download_file(request, id):
     if os.path.exists(link_to_file):
         with open(link_to_file, 'rb') as fh:
             response = HttpResponse(fh.read(), content_type='application/mp3')
-            response['Content-Disposition'] = 'attachment; filename = audio.mp3'
+            response['Content-Disposition'] = 'attachment; filename = {}.mp3'.format(id)
 
         return response
 
